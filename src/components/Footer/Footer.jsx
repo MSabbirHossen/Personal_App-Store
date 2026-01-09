@@ -39,6 +39,8 @@ const Footer = () => {
             className="w-10 h-10"
           />
 
+          <div>
+            <p className="text-center font-semibold text-lg">Social Links</p>
           {
             <nav className="flex gap-4">
               {footerSocialLinks.map((social) => (
@@ -47,18 +49,19 @@ const Footer = () => {
                   href={social.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-2xl"
+                  className="text-2xl mt-2"
                 >
                   {social.icon}
                 </a>
               ))}
             </nav>
           }
+          </div>
         </div>
         <div className="text-center">
           <p>
             Copyright © {new Date().getFullYear()} - All right reserved by
-            <Link to="/">Part-time Coder</Link>.
+            <Link to="https://www.linkedin.com/in/ms-hossen/" target="_blank"> <b> MS Hossen</b></Link>.
           </p>
         </div>
       </footer>

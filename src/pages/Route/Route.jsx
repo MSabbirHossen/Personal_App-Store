@@ -11,6 +11,7 @@ export const router = createBrowserRouter([
     errorElement: <Error404/>,
     children: [
       {index: true, Component: Home},
+      {}
     
     ]
   },
