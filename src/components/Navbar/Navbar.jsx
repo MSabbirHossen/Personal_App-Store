@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import { FaGithub } from "react-icons/fa6";
 const navlinks = [
   { name: "Home", path: "/" },
@@ -19,10 +19,10 @@ const Navbar = () => {
         tabIndex="-1"
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
        {navlinks.map((link) => (
-         <li key={link.name}>
-           <a href={link.path}>{link.name}</a>
-         </li>
-       ))}
+       <NavLink className="active:underline active:text-[#7d45e9]"><li key={link.name}>
+         <a href={link.path}>{link.name}</a>
+       </li></NavLink>
+     ))}
       </ul>
     </div>
     <img src="/assets/logo.png" alt="Logo" className="w-10 m-2" />
@@ -31,14 +31,16 @@ const Navbar = () => {
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
      {navlinks.map((link) => (
-       <li key={link.name}>
+       <NavLink className="active:underline active:text-[#7d45e9]"><li key={link.name}>
          <a href={link.path}>{link.name}</a>
-       </li>
+       </li></NavLink>
      ))}
     </ul>
   </div>
   <div className="navbar-end">
-    <Link to="https://github.com/MSabbirHossen/Personal_App-Store.git" className="btn"><FaGithub /> Contribute</Link>
+    <button className="btn bg-[#7d45e9] rounded-lg text-white hover:bg-[#5c2ad1]"><FaGithub />
+     <Link to="https://github.com/MSabbirHossen/Personal_App-Store.git" > Contribute</Link>
+    </button>    
   </div>
 </div>
   );
