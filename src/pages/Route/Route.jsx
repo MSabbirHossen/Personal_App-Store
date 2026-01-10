@@ -8,6 +8,19 @@ import AppDetails from "../AppDetails/AppDetails";
 import AppNotFound from "../Error/AppNotFound";
 import Installation from "../Installation/Installation";
 
+const appsLoader = async () => {
+  try {
+    const response = await fetch("/appsData.json");
+    if (!response.ok) {
+      throw new Error("Failed to fetch apps data");
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Loader error:", error);
+    throw error;
+  }
+};
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -16,24 +29,22 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch("appsData.json"),
-        path: "/",
+        loader: appsLoader,
         Component: Home,
       },
       {
         path: "/apps",
-        loader: () => fetch("appsData.json"),
+        loader: appsLoader,
         Component: AllApps,
       },
       {
         path: "/apps/:id",
-        loader: () => fetch("appsData.json"),
-        errorElement: <AppNotFound />,
+        loader: appsLoader,
         Component: AppDetails,
       },
       {
         path: "/installation",
-        loader: () => fetch("appsData.json"),
+        loader: appsLoader,
         Component: Installation,
       },
     ],

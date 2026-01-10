@@ -1,14 +1,4 @@
-# 🦸‍♂️ Assignment 008 — Hero IO
-
-### 📅 Deadline For 60 marks: 10 October , 2025 (11:59 pm ⏱️)
-
-### 📅 Deadline For 50 marks : 11 October , 2025 (5:59 pm⏱️)
-
-### 📅 Deadline For 30 marks: Any time after 11 October , 2025 (5:59 pm⏱️)
-
----
-## Private Repo-Link : please create your own public repository for this assignment.
----
+# 🦸‍♂️ Assignment 008
 
 # 🐣 Basic Requirements
 
@@ -20,9 +10,9 @@
 
 ---
 
-# 🔧 Main Requirements
+## 🔧 Main Requirements
 
-## 1. 🧱 Layout & Data Design
+### 1. 🧱 Layout & Data Design
 
 #### Header
 
@@ -88,7 +78,7 @@
 
 ## 3.📱 All Apps Page
 
-#### Title Section
+### Title Section
 
 - Include a title and subtitle following the Figma design.
 
@@ -114,7 +104,7 @@
 
 ## 4.📊 App Details Page
 
-#### App Information
+### App Information
 
 - Show app image on the left.
 - Display app details such as title, rating, downloads, reviews.
@@ -136,10 +126,9 @@
 ## 5. Error Page & Others
 
 - Create a custom error page for invalid routes.
+- Show a loading animation during: `Challenge Part`
 
-- Show a loading animation during: `Challenge Part`  
-
-  - Page navigation. 
+  - Page navigation.
   - Search operation.
 
 - Show a Relevant Not Found message app not found in app details section.
@@ -180,8 +169,8 @@
 
 ### Loading Animation
 
-- Show a loading animation during: 
-  - Page navigation. 
+- Show a loading animation during:
+  - Page navigation.
   - Search operation
 
 ---

@@ -2,13 +2,9 @@ import { Link, useLoaderData } from "react-router";
 import { CiSearch } from "react-icons/ci";
 import AppCard from "../../components/AppCard/AppCard";
 import { useState, useMemo } from "react";
-// import { appsData } from '../../../../Hero_App/src/data/appsData';
 
 const AllApps = () => {
   const appsData = useLoaderData();
-  // const {companyName,description,downloads,id,image,ratingAvg,ratings,reviews,size,title} = data
-  // console.log("🚀 ~ AllApps ~ data:", data)
-
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState("none");
 
@@ -21,6 +17,8 @@ const AllApps = () => {
       filtered.sort((a, b) => b.downloads - a.downloads);
     } else if (sortOrder === "low-high") {
       filtered.sort((a, b) => a.downloads - b.downloads);
+    } else if (sortOrder === "most-popular") {
+      filtered.sort((a, b) => b.ratingAvg - a.ratingAvg);
     }
 
     return filtered;
@@ -28,24 +26,24 @@ const AllApps = () => {
 
   return (
     <div className="w-5/6 mx-auto">
-      <div className="text-center m-4">
-        <h1 className="text-3xl font-bold">Our All Applications</h1>
-        <p className="font-semibold m-2">
+      <div className="text-center m-6 p-4">
+        <h1 className="text-5xl font-bold">Our All Applications</h1>
+        <p className="text-xl font-semibold m-2">
           Explore all the applications available in our store.
         </p>
       </div>
-      <div className="m-4 flex justify-center md:justify-between items-center flex-col md:flex-row gap-3">
-        <div className="relative">
+      <div className="m-4 flex justify-center md:justify-between items-center flex-col md:flex-row gap-4">
+        <div className="relative w-full md:w-auto">
           <CiSearch className="absolute left-2 top-2.5" />
           <input
-            className="border p-2 pl-8 rounded-lg"
+            className="border p-2 pl-8 rounded-lg w-full md:w-64"
             type="text"
             placeholder="Search apps..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 w-full md:w-auto">
           <label className="block text-sm font-semibold text-gray-700">
             📊 Sort By
           </label>
@@ -59,7 +57,7 @@ const AllApps = () => {
             <option value="low-high">Downloads: Low to High</option>
           </select>
         </div>
-        <div className="mt-4 flex flex-col lg:flex-row items-center justify-between gap-4">
+        <div className="mt-4 flex flex-col lg:flex-row items-center justify-between gap-4 w-full md:w-auto">
           <h1 className="font-bold text-xl">
             {filteredApps.length} Apps Found
           </h1>
@@ -90,14 +88,13 @@ const AllApps = () => {
       ) : (
         <div className="flex flex-col items-center justify-center min-h-80 sm:min-h-96 bg-white rounded-xl shadow-lg border border-gray-100 space-y-4 py-4">
           <div className="text-6xl sm:text-7xl lg:text-8xl mb-4 sm:mb-6">
-            <img src="/assets/App-Error.png" alt="App-Error.png" />
+            <img src="/App-Error.png" alt="App-Error.png" />
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3 text-gray-800">
-            OPPS!! APP NOT FOUND
+            OOPS! APP NOT FOUND
           </h2>
           <p className="text-gray-600 text-base sm:text-lg text-center px-4">
-            The app you are looking for is not available in our system. Please
-            try a different search.
+            The app you're searching for isn't available in our store. Please try a different search.
           </p>
           <div className="flex items-center gap-3 p-2">
             <button

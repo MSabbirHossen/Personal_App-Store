@@ -3,7 +3,7 @@ import { FaFacebook } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
-import { Link, Links } from "react-router";
+import { Link } from "react-router";
 
 const footerSocialLinks = [
   {

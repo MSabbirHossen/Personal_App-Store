@@ -13,9 +13,9 @@ const Error404 = () => {
         <p className="m-2 font-semibold text-black">
           The page you are looking for does not exist.
         </p>
-        <button className="btn bg-[#7d45e9] text-white rounded-lg">
-          <Link to="/">Go to Home</Link>
-        </button>
+        <Link to="/" className="btn bg-[#7d45e9] text-white rounded-lg">
+          Go to Home
+        </Link>
       </div>
       <Footer />
     </div>

@@ -1,24 +1,24 @@
-import React from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useLoaderData, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { getInstalledApps, uninstallApp } from "../../utility/localStorage";
 
 const Installation = () => {
   const appsData = useLoaderData();
   const navigate = useNavigate();
-  const installedAppIds = getInstalledApps();
+  const [installedAppIds, setInstalledAppIds] = useState(getInstalledApps());
+
   const installedApps = appsData.filter((app) =>
     installedAppIds.includes(app.id)
   );
 
   const handleUninstall = (appId, appTitle) => {
     uninstallApp(appId);
-    toast.info(`${appTitle} uninstalled successfully!`, {
+    setInstalledAppIds((prev) => prev.filter((id) => id !== appId));
+    toast.error(`${appTitle} uninstalled successfully!`, {
       position: "top-right",
       autoClose: 3000,
     });
-    // Refresh the page to update the list
-    window.location.reload();
   };
 
   return (
@@ -29,7 +29,7 @@ const Installation = () => {
             Your Installed Apps
           </h1>
           <p className="p-2 text-base sm:text-lg text-gray-600">
-            Explore All Trending Apps on the Market developed by us
+            Explore All Installed Apps from Your Collection
           </p>
         </div>
 
