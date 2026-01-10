@@ -42,7 +42,9 @@ const AppCard = ({ app }) => {
         <div className="space-y-3">
           <div className="flex justify-between items-center gap-2">
             <div className="flex items-center gap-2 bg-amber-50 px-3 py-1.5 rounded-lg">
-              <span className="text-amber-500 text-lg"><FaStarHalfAlt /></span>
+              <span className="text-amber-500 text-lg">
+                <FaStarHalfAlt />
+              </span>
               <span className="font-bold text-gray-800 text-sm">
                 {app.ratingAvg}
               </span>

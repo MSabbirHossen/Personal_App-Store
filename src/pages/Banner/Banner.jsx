@@ -19,9 +19,7 @@ const Banner = () => {
   return (
     <div className="text-center">
       <div className="my-4">
-        <h1 className="text-4xl lg:text-6xl font-bold p-2">
-          We Build Apps
-        </h1>
+        <h1 className="text-4xl lg:text-6xl font-bold p-2">We Build Apps</h1>
         <p className="font-semibold lg:text-lg lg:p-4">
           At Personal App Store, we craft innovative apps designed to make
           everyday life simpler, smarter, and more exciting. <br /> Our goal is

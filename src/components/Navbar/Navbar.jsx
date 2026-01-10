@@ -32,14 +32,12 @@ const Navbar = () => {
           <ul className="dropdown-content menu menu-sm bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
             {navLinks.map((link) => (
               <li key={link.name}>
-                <Link to={link.path}>
-                  {link.name}
-                </Link>
+                <Link to={link.path}>{link.name}</Link>
               </li>
             ))}
           </ul>
         </div>
-        <img src="/assets/logo.png" alt="Logo" className="w-10 m-2" />
+        <img src="/logo.png" alt="Logo" className="w-10 m-2" />
         <a className="btn btn-ghost text-xl hidden md:block">
           Personal App Store
         </a>
@@ -56,13 +54,15 @@ const Navbar = () => {
         ))}
       </div>
       <div className="navbar-end">
-        <button className="btn bg-[#7d45e9] rounded-lg text-white hover:bg-[#5c2ad1] px-4 flex items-center gap-2">
+        <a
+          href="https://github.com/MSabbirHossen/Personal_App-Store.git"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn bg-[#7d45e9] rounded-lg text-white hover:bg-[#5c2ad1] px-4 flex items-center gap-2"
+        >
           <FaGithub />
-          <Link to="https://github.com/MSabbirHossen/Personal_App-Store.git">
-            {" "}
-            Contribute
-          </Link>
-        </button>
+          Contribute
+        </a>
       </div>
     </div>
   );

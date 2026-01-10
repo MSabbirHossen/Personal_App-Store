@@ -22,7 +22,6 @@ const AppDetailsHeader = () => {
     }
   };
 
-
   return (
     <div>
       {/* App Header */}

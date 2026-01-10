@@ -35,7 +35,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row md:justify-between w-full px-4">
           <Link to="/">
             <img
-              src="/assets/logo.png"
+              src="/logo.png"
               alt="App Store Logo"
               className="w-10 h-10 mx-auto md:mx-0 mb-4 md:mb-0 cursor-pointer"
             />
@@ -43,27 +43,31 @@ const Footer = () => {
 
           <div className="text-center">
             <p className="text-center font-semibold text-lg">Social Links</p>
-          {
-            <nav className="flex gap-4 justify-center md:justify-between items-center mt-2">
-              {footerSocialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-2xl mt-2"
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </nav>
-          }
+            {
+              <nav className="flex gap-4 justify-center md:justify-between items-center mt-2">
+                {footerSocialLinks.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-2xl mt-2"
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </nav>
+            }
           </div>
         </div>
         <div className="text-center m-2">
           <p>
             Copyright © {new Date().getFullYear()} - All right reserved by
-            <Link to="https://www.linkedin.com/in/ms-hossen/" target="_blank"> <b> MS Hossen</b></Link>.
+            <Link to="https://www.linkedin.com/in/ms-hossen/" target="_blank">
+              {" "}
+              <b> MS Hossen</b>
+            </Link>
+            .
           </p>
         </div>
       </footer>

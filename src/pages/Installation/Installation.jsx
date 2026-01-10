@@ -29,7 +29,7 @@ const Installation = () => {
             Your Installed Apps
           </h1>
           <p className="p-2 text-base sm:text-lg text-gray-600">
-           Explore All Trending Apps on the Market developed by us
+            Explore All Trending Apps on the Market developed by us
           </p>
         </div>
 

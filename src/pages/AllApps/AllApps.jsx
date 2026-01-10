@@ -96,7 +96,8 @@ const AllApps = () => {
             OPPS!! APP NOT FOUND
           </h2>
           <p className="text-gray-600 text-base sm:text-lg text-center px-4">
-            The app you are looking for is not available in our system. Please try a different search.
+            The app you are looking for is not available in our system. Please
+            try a different search.
           </p>
           <div className="flex items-center gap-3 p-2">
             <button

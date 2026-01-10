@@ -1,6 +1,6 @@
 import React from "react";
 import AppDetailsHeader from "./AppDetailsHeader";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 import AppDetailsContent from "./AppDetailsContent";
 import { FaArrowLeft } from "react-icons/fa";
 
