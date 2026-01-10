@@ -27,7 +27,7 @@ const AllApps = () => {
   }, [searchTerm, sortOrder, appsData]);
 
   return (
-    <div className="w-5/6 mx-auto ">
+    <div className="w-5/6 mx-auto">
       <div className="text-center m-4">
         <h1 className="text-3xl font-bold">Our All Applications</h1>
         <p className="font-semibold m-2">
@@ -35,25 +35,22 @@ const AllApps = () => {
         </p>
       </div>
       <div className="m-4 flex justify-center md:justify-between items-center flex-col md:flex-row gap-3">
-        <span className="font-bold text-xl">
-          {filteredApps.length} Apps Found
-        </span>
         <div className="relative">
           <CiSearch className="absolute left-2 top-2.5" />
           <input
-            className="outline p-2 pl-8 rounded-lg"
+            className="border p-2 pl-8 rounded-lg"
             type="text"
             placeholder="Search apps..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
+        <div className="flex flex-col gap-2">
+          <label className="block text-sm font-semibold text-gray-700">
             📊 Sort By
           </label>
           <select
-            className="w-full px-4 py-2.5 sm:py-3 border-2 border-gray-200 focus:border-indigo-500 focus:outline-none rounded-lg transition-all duration-300 bg-white"
+            className="px-4 py-2.5 sm:py-3 border-2 border-gray-200 focus:border-indigo-500 focus:outline-none rounded-lg transition-all duration-300 bg-white"
             value={sortOrder}
             onChange={(e) => setSortOrder(e.target.value)}
           >
@@ -62,7 +59,10 @@ const AllApps = () => {
             <option value="low-high">Downloads: Low to High</option>
           </select>
         </div>
-        <div className="mt-4 flex items-center justify-between">
+        <div className="mt-4 flex flex-col lg:flex-row items-center justify-between gap-4">
+          <h1 className="font-bold text-xl">
+            {filteredApps.length} Apps Found
+          </h1>
           <p className="text-sm text-gray-600 font-medium">
             Showing{" "}
             <span className="text-indigo-600 font-bold">
@@ -88,7 +88,7 @@ const AllApps = () => {
           ))}
         </div>
       ) : (
-        <div className="flex flex-col items-center justify-center min-h-80 sm:min-h-96 bg-white rounded-xl shadow-lg border border-gray-100 space-x-1.5 py-4">
+        <div className="flex flex-col items-center justify-center min-h-80 sm:min-h-96 bg-white rounded-xl shadow-lg border border-gray-100 space-y-4 py-4">
           <div className="text-6xl sm:text-7xl lg:text-8xl mb-4 sm:mb-6">
             <img src="/assets/App-Error.png" alt="App-Error.png" />
           </div>
@@ -96,21 +96,18 @@ const AllApps = () => {
             OPPS!! APP NOT FOUND
           </h2>
           <p className="text-gray-600 text-base sm:text-lg text-center px-4">
-            The App you are requesting is not found on our system.  please try another apps
+            The app you are looking for is not available in our system. Please try a different search.
           </p>
           <div className="flex items-center gap-3 p-2">
             <button
-            className="btn btn-primary btn-lg"
-            onClick={() => setSearchTerm("")}
-          >
-            Clear Search
-          </button>
-          <Link
-            to="/"
-            className="btn btn-primary btn-lg"            
-          >
-            Go Home
-          </Link>
+              className="btn btn-primary btn-lg"
+              onClick={() => setSearchTerm("")}
+            >
+              Clear Search
+            </button>
+            <Link to="/" className="btn btn-primary btn-lg">
+              Go Home
+            </Link>
           </div>
         </div>
       )}

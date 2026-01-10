@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useLoaderData, useParams } from "react-router";
 import { installApp, isAppInstalled } from "../../utility/localStorage";
-import toast from "daisyui/components/toast";
 import { FaCommentDots, FaDownload, FaStarHalfAlt } from "react-icons/fa";
 import { LuFileStack } from "react-icons/lu";
+import { toast } from "react-toastify";
 
 const AppDetailsHeader = () => {
   const appsData = useLoaderData();
@@ -12,20 +12,16 @@ const AppDetailsHeader = () => {
   const [installed, setInstalled] = useState(isAppInstalled(parseInt(id)));
 
   const handleInstall = () => {
-    installApp(app.id);
-    setInstalled(true);
-    toast.success(`${app.title} installed successfully!`, {
-      position: "bottom-right",
-      autoClose: 3000,
-    });
+    if (app) {
+      installApp(app.id);
+      setInstalled(true);
+      toast.success(`${app.title} installed successfully!`, {
+        position: "top-right",
+        autoClose: 3000,
+      });
+    }
   };
 
-//   const commonData =[
-//         {text: "Rating", icon:<FaStarHalfAlt /> , count: app.ratingAvg },
-//         {text: "Downloads", icon:<FaDownload /> , count: app.downloads },
-//         {text: "Reviews", icon:<FaCommentDots /> , count: app.reviews },
-//         {text: "Size", icon:<LuFileStack /> , count: app.size + "MB" },
-//     ]
 
   return (
     <div>
@@ -52,16 +48,16 @@ const AppDetailsHeader = () => {
           </div>
 
           <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-8">
-            <div>
-                <div className="text-xs sm:text-sm opacity-90 font-semibold">Rating</div>            
-                <div className="bg-gradient-to-br from-amber-400 to-amber-500 text-white rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-lg flex justify-around items-center">
-                     <div className="text-3xl sm:text-4xl mb-2">
-                         <FaStarHalfAlt />
-                    </div>              
-                    <div className="text-2xl sm:text-3xl font-bold">
-                        {app.ratingAvg}
-                    </div>
-                </div>
+            <div className="bg-gradient-to-br from-amber-400 to-amber-500 text-white rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-lg">
+              <div className="text-3xl sm:text-4xl mb-2">
+                <FaStarHalfAlt />
+              </div>
+              <div className="text-xs sm:text-sm opacity-90 font-semibold">
+                Rating
+              </div>
+              <div className="text-2xl sm:text-3xl font-bold">
+                {app.ratingAvg}
+              </div>
             </div>
             <div className="bg-gradient-to-br from-indigo-400 to-indigo-500 text-white rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-lg">
               <div className="text-3xl sm:text-4xl mb-2">

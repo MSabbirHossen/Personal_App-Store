@@ -29,15 +29,15 @@ const Navbar = () => {
               />{" "}
             </svg>
           </div>
-          {navLinks.map((link) => (
-            <Link
-              to={link.path}
-              className="menu menu-sm bg-base-100  dropdown-content rounded-box z-1 mt-3 w-52 p-2 shadow"
-              key={link.name}
-            >
-              {link.name}
-            </Link>
-          ))}
+          <ul className="dropdown-content menu menu-sm bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+            {navLinks.map((link) => (
+              <li key={link.name}>
+                <Link to={link.path}>
+                  {link.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
         <img src="/assets/logo.png" alt="Logo" className="w-10 m-2" />
         <a className="btn btn-ghost text-xl hidden md:block">

@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData, useParams } from "react-router";
+import { Link, useLoaderData, useParams } from "react-router";
 import {
   BarChart,
   Bar,
@@ -101,9 +101,14 @@ const AppDetailsContent = () => {
             <p className="text-base sm:text-lg text-gray-700 font-semibold mb-4">
               {app.companyName}
             </p>
-            <button className="w-full px-4 py-2 border-2 border-purple-500 text-purple-600 font-bold rounded-lg hover:bg-purple-50 transition-all duration-300">
+            <a
+              href={app.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn w-full px-4 py-2 border-2 border-purple-500 text-purple-600 font-bold rounded-lg hover:bg-purple-100 transition-all duration-300 inline-block text-center"
+            >
               Visit Publisher
-            </button>
+            </a>
           </div>
         </div>
       </div>

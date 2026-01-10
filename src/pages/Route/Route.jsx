@@ -6,6 +6,7 @@ import Error404 from "../Error/Error404";
 import AllApps from "../AllApps/AllApps";
 import AppDetails from "../AppDetails/AppDetails";
 import AppNotFound from "../Error/AppNotFound";
+import Installation from "../Installation/Installation";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +31,11 @@ export const router = createBrowserRouter([
         errorElement: <AppNotFound/>,
         Component: AppDetails,
       },
+      {
+        path: '/installation',
+        loader: () => fetch("appsData.json"),
+        Component: Installation,
+      }
     ],
   },
 ]);

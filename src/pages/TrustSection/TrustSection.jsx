@@ -20,7 +20,7 @@ const trustData = [
 const TrustSection = () => {
     return (
         <div className="bg-[#763fe8]  text-center">
-        <h1 className="text-white text-3xl font-bold p-4">
+        <h1 className="text-white text-3xl md:text-5xl font-bold p-4 md:p-8">
           Trusted by Millions, Built for You
         </h1>
         <div className="w-3/4 mx-auto flex flex-col sm:flex-row justify-around items-center text-white p-6">

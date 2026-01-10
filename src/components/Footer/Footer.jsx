@@ -33,11 +33,13 @@ const Footer = () => {
     <div>
       <footer className="p-4 bg-gray-800 text-white mt-10">
         <div className="flex flex-col md:flex-row md:justify-between w-full px-4">
-          <img
-            src="/assets/logo.png"
-            alt="App Store Logo"
-            className="w-10 h-10"
-          />
+          <Link to="/">
+            <img
+              src="/assets/logo.png"
+              alt="App Store Logo"
+              className="w-10 h-10 mx-auto md:mx-0 mb-4 md:mb-0 cursor-pointer"
+            />
+          </Link>
 
           <div className="text-center">
             <p className="text-center font-semibold text-lg">Social Links</p>
