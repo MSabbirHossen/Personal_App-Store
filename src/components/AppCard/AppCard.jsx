@@ -7,7 +7,7 @@ const AppCard = ({ app }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleCardClick = () => {
-    navigate(`/app/${app.id}`);
+    navigate(`/apps/${app.id}`);
   };
 
   return (

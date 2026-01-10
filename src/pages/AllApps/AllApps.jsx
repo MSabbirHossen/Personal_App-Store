@@ -1,32 +1,121 @@
-import React from 'react';
-import { useLoaderData } from 'react-router';
+import { Link, useLoaderData } from "react-router";
 import { CiSearch } from "react-icons/ci";
-import AppCard from '../../components/AppCard/AppCard';
+import AppCard from "../../components/AppCard/AppCard";
+import { useState, useMemo } from "react";
+// import { appsData } from '../../../../Hero_App/src/data/appsData';
 
 const AllApps = () => {
-    const data = useLoaderData();
-    // const {companyName,description,downloads,id,image,ratingAvg,ratings,reviews,size,title} = data
-    // console.log("🚀 ~ AllApps ~ data:", data)
-    return (
-        <div className='w-5/6 mx-auto '>
-            <div className='text-center m-4'>
-                <h1 className='text-3xl font-bold'>Our All Applications</h1>
-            <p className='font-semibold m-2'>Explore all the applications available in our store.</p>
-            </div>
-            <div className='m-4 flex justify-center md:justify-between items-center flex-col md:flex-row gap-3'>
-                <span className='font-bold text-xl'>{data.length} Apps Found</span>
-                <div className='relative'>
-                    <CiSearch className='absolute left-2 top-2.5' />
-                    <input className='outline p-2 pl-8 rounded-lg' type="text" placeholder='Search apps...' />
-                </div>
-            </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2'>
-                {data.map(app => (
-                    <AppCard key={app.id} app={app} />
-                ))}
-            </div>
-        </div>
+  const appsData = useLoaderData();
+  // const {companyName,description,downloads,id,image,ratingAvg,ratings,reviews,size,title} = data
+  // console.log("🚀 ~ AllApps ~ data:", data)
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const [sortOrder, setSortOrder] = useState("none");
+
+  const filteredApps = useMemo(() => {
+    let filtered = appsData.filter((app) =>
+      app.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    if (sortOrder === "high-low") {
+      filtered.sort((a, b) => b.downloads - a.downloads);
+    } else if (sortOrder === "low-high") {
+      filtered.sort((a, b) => a.downloads - b.downloads);
+    }
+
+    return filtered;
+  }, [searchTerm, sortOrder, appsData]);
+
+  return (
+    <div className="w-5/6 mx-auto ">
+      <div className="text-center m-4">
+        <h1 className="text-3xl font-bold">Our All Applications</h1>
+        <p className="font-semibold m-2">
+          Explore all the applications available in our store.
+        </p>
+      </div>
+      <div className="m-4 flex justify-center md:justify-between items-center flex-col md:flex-row gap-3">
+        <span className="font-bold text-xl">
+          {filteredApps.length} Apps Found
+        </span>
+        <div className="relative">
+          <CiSearch className="absolute left-2 top-2.5" />
+          <input
+            className="outline p-2 pl-8 rounded-lg"
+            type="text"
+            placeholder="Search apps..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+        </div>
+        <div>
+          <label className="block text-sm font-semibold text-gray-700 mb-2">
+            📊 Sort By
+          </label>
+          <select
+            className="w-full px-4 py-2.5 sm:py-3 border-2 border-gray-200 focus:border-indigo-500 focus:outline-none rounded-lg transition-all duration-300 bg-white"
+            value={sortOrder}
+            onChange={(e) => setSortOrder(e.target.value)}
+          >
+            <option value="none">Most Popular</option>
+            <option value="high-low">Downloads: High to Low</option>
+            <option value="low-high">Downloads: Low to High</option>
+          </select>
+        </div>
+        <div className="mt-4 flex items-center justify-between">
+          <p className="text-sm text-gray-600 font-medium">
+            Showing{" "}
+            <span className="text-indigo-600 font-bold">
+              {filteredApps.length}
+            </span>{" "}
+            of{" "}
+            <span className="text-gray-800 font-bold">{appsData.length}</span>{" "}
+            apps
+          </p>
+        </div>
+      </div>
+      {/* Apps Grid */}
+      {filteredApps.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 animate-in fade-in">
+          {filteredApps.map((app, idx) => (
+            <div
+              key={app.id}
+              style={{ animationDelay: `${idx * 0.05}s` }}
+              className="animate-in fade-in slide-in-from-bottom-4"
+            >
+              <AppCard app={app} />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="flex flex-col items-center justify-center min-h-80 sm:min-h-96 bg-white rounded-xl shadow-lg border border-gray-100 space-x-1.5 py-4">
+          <div className="text-6xl sm:text-7xl lg:text-8xl mb-4 sm:mb-6">
+            <img src="/assets/App-Error.png" alt="App-Error.png" />
+          </div>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3 text-gray-800">
+            OPPS!! APP NOT FOUND
+          </h2>
+          <p className="text-gray-600 text-base sm:text-lg text-center px-4">
+            The App you are requesting is not found on our system.  please try another apps
+          </p>
+          <div className="flex items-center gap-3 p-2">
+            <button
+            className="btn btn-primary btn-lg"
+            onClick={() => setSearchTerm("")}
+          >
+            Clear Search
+          </button>
+          <Link
+            to="/"
+            className="btn btn-primary btn-lg"            
+          >
+            Go Home
+          </Link>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default AllApps;
