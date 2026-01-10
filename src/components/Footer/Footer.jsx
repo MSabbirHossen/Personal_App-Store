@@ -9,7 +9,7 @@ const footerSocialLinks = [
   {
     name: "Facebook",
     icon: <FaFacebook />,
-    link: "https://www.facebook.com/profile.php?id=61577697837535",
+    link: "https://www.facebook.com/parttimecoder/",
   },
   {
     name: "Instagram",
@@ -19,7 +19,7 @@ const footerSocialLinks = [
   {
     name: "LinkedIn",
     icon: <FaLinkedin />,
-    link: "https://www.linkedin.com/in/ms-hossen/",
+    link: "https://www.linkedin.com/in/parttimecoder/",
   },
   {
     name: "YouTube",
@@ -39,10 +39,10 @@ const Footer = () => {
             className="w-10 h-10"
           />
 
-          <div>
+          <div className="text-center">
             <p className="text-center font-semibold text-lg">Social Links</p>
           {
-            <nav className="flex gap-4">
+            <nav className="flex gap-4 justify-center md:justify-between items-center mt-2">
               {footerSocialLinks.map((social) => (
                 <a
                   key={social.name}
@@ -58,7 +58,7 @@ const Footer = () => {
           }
           </div>
         </div>
-        <div className="text-center">
+        <div className="text-center m-2">
           <p>
             Copyright © {new Date().getFullYear()} - All right reserved by
             <Link to="https://www.linkedin.com/in/ms-hossen/" target="_blank"> <b> MS Hossen</b></Link>.
