@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaDownload, FaStarHalfAlt } from "react-icons/fa";
 
 const AppCard = ({ app }) => {
   const navigate = useNavigate();
@@ -24,8 +25,6 @@ const AppCard = ({ app }) => {
             isHovered ? "scale-110" : "scale-100"
           }`}
         />
-        {/* <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        </div> */}
       </figure>
 
       <div className="p-4 space-y-3">
@@ -38,18 +37,18 @@ const AppCard = ({ app }) => {
           </p>
         </div>
 
-        {/* <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div> */}
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
 
         <div className="space-y-3">
           <div className="flex justify-between items-center gap-2">
             <div className="flex items-center gap-2 bg-amber-50 px-3 py-1.5 rounded-lg">
-              <span className="text-amber-500 text-lg">⭐</span>
+              <span className="text-amber-500 text-lg"><FaStarHalfAlt /></span>
               <span className="font-bold text-gray-800 text-sm">
                 {app.ratingAvg}
               </span>
             </div>
-            <span className="text-xs font-semibold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-lg">
-              {(app.downloads / 1000000).toFixed(0)}M Downloads
+            <span className="text-sm font-semibold text-indigo-600 bg-indigo-50 px-3 py-1.5 rounded-lg flex items-center gap-2">
+              {(app.downloads / 1000000).toFixed(0)}M <FaDownload />
             </span>
           </div>
           <button

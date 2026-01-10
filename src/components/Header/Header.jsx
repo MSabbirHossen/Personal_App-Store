@@ -5,9 +5,9 @@ import Banner from "../../pages/Banner/Banner";
 
 const Header = () => {
   return (
-    <div>      
+    <div className="w-5/6 mx-auto">      
       <Banner/>
-      <div className="hero mt-6 px-6 mx-auto">
+      <div className="hero mt-6 px-6">
         <img src="/assets/hero.png" alt="Hero Image" />
       </div>
       
